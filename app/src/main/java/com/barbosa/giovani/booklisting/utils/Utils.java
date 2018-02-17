@@ -143,16 +143,14 @@ public final class Utils {
                 final String title = volumeInfo.getString("title");
                 final JSONArray authors = volumeInfo.optJSONArray("authors");
 
-                if (authors == null) {
-                    Log.e("count", i +"");
+                if (authors != null) {
+                    final List<String> authorList = new ArrayList<>();
+                    for (int j = 0; j < authors.length(); j++) {
+                        final String author = authors.getString(j);
+                        authorList.add(author);
+                    }
+                    books.add(new Book(title, authorList));
                 }
-
-                final List<String> authorList = new ArrayList<>();
-                for (int j = 0; j < authors.length(); j++) {
-                    final String author = authors.getString(j);
-                    authorList.add(author);
-                }
-                books.add(new Book(title, authorList));
             }
             return books;
         } catch (JSONException e) {

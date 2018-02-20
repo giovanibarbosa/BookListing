@@ -2,5 +2,5 @@
     <string name="app_name">Book Listing</string>
 
     <string name="empty_book_list">The book list is empty.</string>
-
+    <string name="search_hint">Search</string>
 </resources>

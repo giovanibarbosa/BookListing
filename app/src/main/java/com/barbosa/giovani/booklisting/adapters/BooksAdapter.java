@@ -47,16 +47,6 @@ public class BooksAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private class ViewHolder {
-        TextView titleTextView;
-        View authorsLayout;
-
-        private ViewHolder(View view) {
-            titleTextView = view.findViewById(R.id.title_text_view);
-            authorsLayout = view.findViewById(R.id.authors_view);
-        }
-    }
-
     @Override
     public int getCount() {
         return mBooks.size();
@@ -70,5 +60,19 @@ public class BooksAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public void setBooks(final List<Book> books) {
+        this.mBooks = books;
+    }
+
+    private class ViewHolder {
+        TextView titleTextView;
+        View authorsLayout;
+
+        private ViewHolder(View view) {
+            titleTextView = view.findViewById(R.id.title_text_view);
+            authorsLayout = view.findViewById(R.id.authors_view);
+        }
     }
 }

@@ -2,10 +2,14 @@ package com.barbosa.giovani.booklisting.loaders;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.barbosa.giovani.booklisting.model.Book;
+import com.barbosa.giovani.booklisting.utils.Constants;
 import com.barbosa.giovani.booklisting.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,11 +26,13 @@ public class BooksLoader extends AsyncTaskLoader<List<Book>> {
     /**
      * Constructor to this loader.
      * @param context the context
-     * @param url url to request books
+     * @param args containing the value to request books
      */
-    public BooksLoader(Context context, String url) {
+    public BooksLoader(Context context, Bundle args) {
         super(context);
-        this.mUrl = url;
+        if (args != null) {
+            this.mUrl = args.getString(Constants.QUERY_KEY, Constants.EMPTY_STRING);
+        }
     }
 
     @Override
@@ -36,6 +42,6 @@ public class BooksLoader extends AsyncTaskLoader<List<Book>> {
 
     @Override
     public List<Book> loadInBackground() {
-        return Utils.fetchBooksData(mUrl);
+        return mUrl == null || mUrl.isEmpty() ? new ArrayList<Book>() : Utils.fetchBooksData(mUrl);
     }
 }

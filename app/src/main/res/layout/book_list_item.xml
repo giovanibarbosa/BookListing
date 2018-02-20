@@ -10,13 +10,16 @@
         android:text="Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/list_item_margin"/>
+        android:layout_margin="@dimen/list_item_margin"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <LinearLayout
         android:id="@+id/authors_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/list_item_margin"
+        android:layout_marginStart="@dimen/list_item_margin"
+        android:layout_marginEnd="@dimen/list_item_margin"
+        android:layout_marginBottom="@dimen/list_item_margin"
         android:orientation="vertical">
     </LinearLayout>
 </LinearLayout>
